@@ -33,6 +33,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
+    <?= $this->fetch('react-css') ?>
     <?= $this->fetch('script') ?>
 </head>
 <body>
@@ -53,5 +54,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </main>
     <footer>
     </footer>
+    <?= $this->fetch('react-script') ?>
 </body>
 </html>

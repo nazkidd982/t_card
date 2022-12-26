@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cf4acc9af81e6ac2fc72dbbb514c2b0d",
+    "content-hash": "6f6bfd7318ed078024080c50250d46f8",
     "packages": [
         {
             "name": "cakephp/cakephp",
@@ -654,6 +654,49 @@
                 "source": "https://github.com/serbanghita/Mobile-Detect/tree/2.8.41"
             },
             "time": "2022-11-08T18:31:26+00:00"
+        },
+        {
+            "name": "ozee31/cakephp-cors",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/toggenation/cakephp-cors.git",
+                "reference": "40794af02284b651f535658c82a880fcafd3a194"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/toggenation/cakephp-cors/zipball/40794af02284b651f535658c82a880fcafd3a194",
+                "reference": "40794af02284b651f535658c82a880fcafd3a194",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/cakephp": "^4.0",
+                "php": ">=7.2.0",
+                "psr/http-server-handler": "^1.0",
+                "psr/http-server-middleware": "^1.0"
+            },
+            "require-dev": {
+                "cakephp/cakephp-codesniffer": "^4.0",
+                "phpunit/phpunit": "~8.5.0"
+            },
+            "default-branch": true,
+            "type": "cakephp-plugin",
+            "autoload": {
+                "psr-4": {
+                    "Cors\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Cors\\Test\\": "tests",
+                    "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
+                }
+            },
+            "description": "A CakePHP (3.3.x) plugin for activate cors domain in your application",
+            "support": {
+                "source": "https://github.com/toggenation/cakephp-cors/tree/master"
+            },
+            "time": "2022-07-12T03:09:08+00:00"
         },
         {
             "name": "psr/container",
@@ -5860,7 +5903,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "ozee31/cakephp-cors": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
