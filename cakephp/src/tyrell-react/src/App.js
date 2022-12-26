@@ -23,8 +23,15 @@ function App({url}) {
                 React has been installed && working.
             </p>
         </header>
-        {data && data.map(function (line) {
-            return <p>{ line }</p>
+        <h4>Card Distribution</h4>
+        {data && data.map(function (items, index) {
+            return (
+                <p><b>Player { index + 1 }: </b>
+                    {items.map((subItems, sIndex, array) => {
+                        return <span>{subItems} {sIndex !== array.length - 1 ? ', ' : ''} </span>
+                    })}
+                </p>
+            );
         })}
     </div>);
 }
