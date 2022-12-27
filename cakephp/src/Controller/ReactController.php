@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -13,6 +14,7 @@ use Exception;
  */
 class ReactController extends AppController
 {
+
     /**
      * Initialize controller
      *
@@ -30,35 +32,16 @@ class ReactController extends AppController
         $this->ReactEmbed->embedAssets('tyrell-react');
     }
 
-//    public function api()
-//    {
-//        $data = [
-//            'Card Distribution',
-//            'Current SQL',
-//            'New SQL'
-//        ];
-//
-//        $this->set(compact('data'));
-//        $this->viewBuilder()->setOption('serialize', ['data']);
-//
-//        if (!$this->request->is('ajax')) {
-//            return $this->getResponse()
-//                ->withStringBody(
-//                    '<pre>' .
-//                    json_encode($data, JSON_PRETTY_PRINT)
-//                    . '</pre>'
-//                );
-//        }
-//    }
-
-//    public function cardDistribution($playerNumber)
-
     /**
      * @throws Exception
      */
-    public function api($playerNumber = null)
+    public function api()
     {
-        $playerNumber = 0;
+        $playerNumber = $this->request->getData('playerNumber');
+
+        if(!is_numeric($playerNumber)){
+            throw new Exception('Invalid player number: String provided');
+        }
 
         /**
          * Spade = S, Heart = H, Diamond = D, Club = C
@@ -74,7 +57,7 @@ class ReactController extends AppController
         shuffle($allCards);
         $data = [];
 
-        if($playerNumber > 0) {
+        if ($playerNumber > 0) {
             $player = 0;
             foreach ($allCards as $cardKey => $card) {
                 $data[$player][] = $card;
@@ -86,13 +69,13 @@ class ReactController extends AppController
                 }
             }
 
-            if($playerNumber > 52) {
-                for($i = 52; $i <= $playerNumber; $i++){
+            if ($playerNumber > 52) {
+                for ($i = 52; $i <= $playerNumber; $i++) {
                     $data[$i][] = 'Not enough card';
                 }
             }
         } elseif ($playerNumber < 0) {
-            throw new Exception('Invalid player number');
+            throw new Exception('Invalid player number: Negative value');
         } else {
             $data[] = ['No players'];
         }
@@ -101,7 +84,9 @@ class ReactController extends AppController
         $this->viewBuilder()->setOption('serialize', ['data']);
 
         if (!$this->request->is('ajax')) {
-            return $this->getResponse()->withStringBody('<pre>' . json_encode($data, JSON_PRETTY_PRINT) . '</pre>');
+            $ajaxResponse = ['data' => $data];
+
+            return $this->getResponse()->withStringBody(json_encode($ajaxResponse));
         }
     }
 }

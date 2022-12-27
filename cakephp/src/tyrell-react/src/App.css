@@ -41,3 +41,7 @@
 code {
     color: #0b6125;
 }
+
+#player_number {
+    width: 70px;
+}

@@ -34,6 +34,10 @@ $cakeDescription = 'Tyrell: Assessment';
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('react-css') ?>
+    <?= $this->Html->scriptBlock(sprintf(
+        'var csrfToken = %s;',
+        json_encode($this->request->getAttribute('csrfToken'))
+    )); ?>
     <?= $this->fetch('script') ?>
 </head>
 <body>
