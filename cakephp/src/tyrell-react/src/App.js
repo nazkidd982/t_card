@@ -26,7 +26,7 @@ function App({url}) {
         <h4>Card Distribution</h4>
         {data && data.map(function (items, index) {
             return (
-                <p><b>Player { index + 1 }: </b>
+                <p>
                     {items.map((subItems, sIndex, array) => {
                         return <span>{subItems} {sIndex !== array.length - 1 ? ', ' : ''} </span>
                     })}

@@ -58,7 +58,7 @@ class ReactController extends AppController
      */
     public function api($playerNumber = null)
     {
-        $playerNumber = 5;
+        $playerNumber = 0;
 
         /**
          * Spade = S, Heart = H, Diamond = D, Club = C
@@ -85,8 +85,16 @@ class ReactController extends AppController
                     $player = 0;
                 }
             }
+
+            if($playerNumber > 52) {
+                for($i = 52; $i <= $playerNumber; $i++){
+                    $data[$i][] = 'Not enough card';
+                }
+            }
+        } elseif ($playerNumber < 0) {
+            throw new Exception('Invalid player number');
         } else {
-            $data = ['No players'];
+            $data[] = ['No players'];
         }
 
         $this->set(compact('data'));
